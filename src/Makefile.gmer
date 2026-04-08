@@ -35,20 +35,21 @@ RELEASEFLAGS = -O3
 DEBUGFLAGS = -O0 -g
 LIBS = -lm -lpthread -lrt
 INCS = -I.
+WARNFLAGS = -Wall -Wno-unused-result
 BINS  = gmer_counter gmer_caller
 
 #CXXFLAGS = $(INCS) $(DEBUGFLAGS) -Wall 
-CXXFLAGS = $(INCS) $(RELEASEFLAGS) -Wall 
+CXXFLAGS = $(INCS) $(RELEASEFLAGS) $(WARNFLAGS)
 
 .PHONY: all all-before all-after clean clean-custom
 
 all: all-before $(BINS) all-after
 
 gmer_counter: $(GMERCOUNTER_SOURCES)
-	$(CXX) $(GMERCOUNTER_SOURCES) -o gmer_counter $(LIBS) $(CXXFLAGS) -Wall
+	$(CXX) $(GMERCOUNTER_SOURCES) -o gmer_counter $(LIBS) $(CXXFLAGS)
 
 gmer_caller: $(GMER_CALLER_SOURCES)
-	$(CXX) $(GMER_CALLER_SOURCES) -o gmer_caller $(LIBS) $(CXXFLAGS) -Wall
+	$(CXX) $(GMER_CALLER_SOURCES) -o gmer_caller $(LIBS) $(CXXFLAGS)
 
 dist: $(GMERCOUNTER_SOURCES) $(GMER_CALLER_SOURCES)
 	mkdir fastgt_$(VERSION);
