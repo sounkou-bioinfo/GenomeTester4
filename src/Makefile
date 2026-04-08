@@ -171,6 +171,7 @@ AZ_FLAGS = -DAZ_NO_PROPERTIES -DAZ_NO_STRING -DAZ_NO_VALUE
 LIBS = -lm -lpthread -lrt -lz
 INCS = -I.
 WARNFLAGS = -Wall -Wno-unused-result
+GMER_CALLER_WARNFLAGS = -Wno-unused-but-set-variable -Wno-unused-function -Wno-maybe-uninitialized
 BINS  = glistmaker glistquery glistcompare
 
 #CXXFLAGS = $(INCS) $(DEBUGFLAGS) -Wall 
@@ -196,7 +197,7 @@ gmer_counter: $(GMER_COUNTER_SOURCES) $(AZ_SOURCES) $(ARIKKEI_SOURCES)
 	$(CXX) $(GMER_COUNTER_SOURCES) $(AZ_SOURCES) $(ARIKKEI_SOURCES) -o gmer_counter $(LIBS) $(CXXFLAGS) $(AZ_FLAGS)
 
 gmer_caller: $(GMER_CALLER_SOURCES)
-	$(CXX) $(GMER_CALLER_SOURCES) -o gmer_caller $(LIBS) $(CXXFLAGS)
+	$(CXX) $(GMER_CALLER_SOURCES) -o gmer_caller $(LIBS) $(CXXFLAGS) $(GMER_CALLER_WARNFLAGS)
 
 gassembler: $(GASSEMBLER_SOURCES) $(AZ_SOURCES) $(ARIKKEI_SOURCES)
 	$(CXX) $(GASSEMBLER_SOURCES) $(AZ_SOURCES) $(ARIKKEI_SOURCES) -o gassembler $(LIBS) $(CXXFLAGS) $(AZ_FLAGS)

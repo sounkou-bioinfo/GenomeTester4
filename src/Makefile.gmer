@@ -36,6 +36,7 @@ DEBUGFLAGS = -O0 -g
 LIBS = -lm -lpthread -lrt
 INCS = -I.
 WARNFLAGS = -Wall -Wno-unused-result
+GMER_CALLER_WARNFLAGS = -Wno-unused-but-set-variable -Wno-unused-function -Wno-maybe-uninitialized
 BINS  = gmer_counter gmer_caller
 
 #CXXFLAGS = $(INCS) $(DEBUGFLAGS) -Wall 
@@ -49,7 +50,7 @@ gmer_counter: $(GMERCOUNTER_SOURCES)
 	$(CXX) $(GMERCOUNTER_SOURCES) -o gmer_counter $(LIBS) $(CXXFLAGS)
 
 gmer_caller: $(GMER_CALLER_SOURCES)
-	$(CXX) $(GMER_CALLER_SOURCES) -o gmer_caller $(LIBS) $(CXXFLAGS)
+	$(CXX) $(GMER_CALLER_SOURCES) -o gmer_caller $(LIBS) $(CXXFLAGS) $(GMER_CALLER_WARNFLAGS)
 
 dist: $(GMERCOUNTER_SOURCES) $(GMER_CALLER_SOURCES)
 	mkdir fastgt_$(VERSION);
