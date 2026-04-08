@@ -1,7 +1,7 @@
 # Project: GenomeTester v4.0
 
 VERSION = 4.0
-CXX  = gcc
+CXX  ?= gcc
 
 # C Files
 
